@@ -34,7 +34,7 @@ cp .env.example .env        # fyll i ONEMIN_API_KEY
 | `ASSISTANT_1_NAME`, `ASSISTANT_1_MODEL` | Ada, gpt-4o-mini | Första assistenten |
 | `ASSISTANT_2_NAME`, `ASSISTANT_2_MODEL` | Bo, deepseek-v4-pro | Andra assistenten |
 | `ASSISTANT_3_NAME`, `ASSISTANT_3_MODEL` | Kalle, qwen3.7-max | Tredje assistenten |
-| `ASSISTANT_4_NAME`, `ASSISTANT_4_MODEL` | Margareta, glm-5.3 | Fjärde assistenten, med språklärarpersonlighet |
+| `ASSISTANT_4_NAME`, `ASSISTANT_4_MODEL` | Margareta, glm-5.3 | Fjärde assistenten, trött, torr och ärlig |
 | `DOCUMENT_MODEL` | Ada:s modell | Modellen som komprimerar dokument |
 | `PORT` | 8100 | Porten servern lyssnar på |
 
