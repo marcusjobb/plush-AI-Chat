@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Assistenterna</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="layout">
+    <aside id="sidebar" class="sidebar" aria-label="Dokument">
+      <h2 class="sidebar-title">Dokument</h2>
+      <ul id="documents" class="doc-list"></ul>
+      <p id="doc-empty" class="hint" hidden>Inga dokument uppladdade ännu.</p>
+      <button type="button" id="unload" class="pill wide" hidden>Släpp aktiv fil</button>
+    </aside>
+
+    <div class="main-column">
+      <header class="topbar">
+        <div class="session-bar">
+          <button type="button" id="toggle-sidebar" class="pill sidebar-toggle">Dokument</button>
+          <label class="visually-hidden" for="session">Session</label>
+          <select id="session" aria-label="Välj session"></select>
+          <button type="button" id="new-session" class="pill">Ny session</button>
+          <button type="button" id="rename" class="pill">Byt namn</button>
+          <button type="button" id="compact" class="pill">Komprimera</button>
+          <label class="pill file-pill">
+            Ladda upp
+            <input type="file" id="upload" accept=".md,.txt,.json,.csv,.tsv,.ics,.vcf,.xml,.yaml,.yml,.log" hidden>
+          </label>
+        </div>
+        <span id="assistants" class="assistants"></span>
+      </header>
+
+      <main id="chat" class="chat" aria-live="polite"></main>
+
+      <form id="composer" class="composer">
+        <div id="targets" class="targets" role="group" aria-label="Vem ska svara"></div>
+        <div class="composer-box">
+          <textarea id="input" rows="1" placeholder="Skriv till alla, eller @namn för en av dem"></textarea>
+          <button type="submit" id="send" aria-label="Skicka">&#8593;</button>
+        </div>
+        <p class="hint">Enter skickar · Shift+Enter ny rad</p>
+      </form>
+    </div>
+  </div>
+
+  <div id="doc-modal" class="modal" hidden>
+    <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="doc-title">
+      <header class="modal-head">
+        <h2 id="doc-title"></h2>
+        <button type="button" id="doc-close" class="pill">Stäng</button>
+      </header>
+      <div class="modal-tabs">
+        <button type="button" id="tab-original" class="pill target active">Original</button>
+        <button type="button" id="tab-compact" class="pill target">Komprimerad</button>
+      </div>
+      <pre id="doc-text" class="doc-text"></pre>
+      <textarea id="doc-editor" class="doc-editor" hidden></textarea>
+      <footer class="modal-foot">
+        <button type="button" id="doc-edit" class="pill">Redigera</button>
+        <button type="button" id="doc-save-copy" class="pill" hidden>Spara som ny fil</button>
+        <button type="button" id="doc-cancel-edit" class="pill" hidden>Avbryt</button>
+        <button type="button" id="doc-delete" class="pill">Radera</button>
+        <button type="button" id="doc-load-original" class="pill">Ladda in originalet</button>
+        <button type="button" id="doc-load" class="pill">Ladda in komprimerad</button>
+      </footer>
+    </div>
+  </div>
+
+  <script src="/static/markdown.js"></script>
+  <script src="/static/app.js"></script>
+</body>
+</html>
