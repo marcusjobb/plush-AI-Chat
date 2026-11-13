@@ -10,6 +10,7 @@ Webbchatt med fyra AI-assistenter (Ada, Bo, Kalle och Margareta) som pratar allm
 - **Referenslänken** är https://1min.ai?referrer_id=9b12faba-f8a3-49ea-bd25-d8343f1fd965. Den är en referenslänk, och upphovsmannen får en del av det som den som registrerar sig köper.
 - Enligt 1min.AI:s sida just nu får den som registrerar sig via länken 5 000 credits när de går med, och 35 000 credits när de kör en AI-funktion första gången. Upphovsmannen får 5 % av köp i framtiden, och 50 % provision på prenumerationer.
 - Villkoren kan ändras. Kontrollera dem på 1min.AI innan du räknar med något.
+- Innan fick nyregistrerade 50 000 credits, vet ej om det gäller än
 
 ## Kom igång
 
