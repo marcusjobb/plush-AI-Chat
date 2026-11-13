@@ -4,13 +4,12 @@ Webbchatt med fyra AI-assistenter (Ada, Bo, Kalle och Margareta) som pratar allm
 
 ## Om 1min.AI
 
-[1min.AI](https://1min.ai/?referrer_id=9b12faba-f8a3-49ea-bd25-d8343f1fd965) är en tjänst där du kan använda många olika AI-modeller på ett ställe.
+1min.AI är en tjänst där ett konto och en nyckel ger tillgång till många olika AI-modeller.
 
-- Gratisnivån ger **15 000 tokens per dag**. Tokens som inte används kan sparas.
-- För att få dagliga tokens räcker det att logga in varje dag.
-- Länken ovan är en referenslänk. Om du registrerar dig via den får både du och upphovsmannen extra tokens.
-
-API-nyckeln skapas i ditt 1min.AI-konto och läggs i `.env`. Endpointen är `https://api.1min.ai/openai/v1`.
+- **15 000 credits gratis varje dag.** Du får dem genom att besöka webbappen. Dagen börjar 00:00 PST.
+- **Referenslänken** är https://1min.ai?referrer_id=9b12faba-f8a3-49ea-bd25-d8343f1fd965. Den är en referenslänk, och upphovsmannen får en del av det som den som registrerar sig köper.
+- Enligt 1min.AI:s sida just nu får den som registrerar sig via länken 5 000 credits när de går med, och 35 000 credits när de kör en AI-funktion första gången. Upphovsmannen får 5 % av köp i framtiden, och 50 % provision på prenumerationer.
+- Villkoren kan ändras. Kontrollera dem på 1min.AI innan du räknar med något.
 
 ## Kom igång
 

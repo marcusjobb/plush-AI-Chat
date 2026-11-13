@@ -8,20 +8,12 @@ sammanfattning och svaren streamas medan de skrivs.
 
 ## Om 1min.AI
 
-1min.AI är en aggregator: ett konto och en nyckel ger tillgång till många olika
-modeller — GPT, Claude, DeepSeek, Qwen, o3 med flera — via samma
-OpenAI-kompatibla endpoint. Du byter modell med `ONEMIN_MODEL` i stället för att
-skaffa ett konto per leverantör.
+1min.AI är en tjänst där ett konto och en nyckel ger tillgång till många olika AI-modeller.
 
-- **15 000 tokens per dag**, helt gratis. De kan sparas, och det enda som krävs
-  för att få dem är att du loggar in den dagen.
-- **Värvningslänk:** registrerar du dig via
-  [1min.ai](https://1min.ai/?referrer_id=9b12faba-f8a3-49ea-bd25-d8343f1fd965)
-  får både du och den som bjöd in dig extra tokens. Win win.
-
-Alla länkar till 1min.ai i den här mappen går via den länken. API-endpointen
-(`https://api.1min.ai/openai/v1`) är ett undantag — den är teknisk och ska inte
-ha några parametrar.
+- **15 000 credits gratis varje dag.** Du får dem genom att besöka webbappen. Dagen börjar 00:00 PST.
+- **Referenslänken** är https://1min.ai?referrer_id=9b12faba-f8a3-49ea-bd25-d8343f1fd965. Den är en referenslänk, och upphovsmannen får en del av det som den som registrerar sig köper.
+- Enligt 1min.AI:s sida just nu får den som registrerar sig via länken 5 000 credits när de går med, och 35 000 credits när de kör en AI-funktion första gången. Upphovsmannen får 5 % av köp i framtiden, och 50 % provision på prenumerationer.
+- Villkoren kan ändras. Kontrollera dem på 1min.AI innan du räknar med något.
 
 ## Kör
 
