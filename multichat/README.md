@@ -79,3 +79,24 @@ Dokumentet läses bara när du ber om det. Ämnestexten skickas med varje meddel
 - Svaren visas när hela svaret är klart, inte ord för ord.
 - Modellnamnen är inte verifierade mot 1min.AI:s lista. Kontrollera dem innan du kör.
 - Sessionsfilerna ligger lokalt i `sessions/` och committas aldrig.
+
+## Byt leverantör
+
+Appen pratar med vilken OpenAI-kompatibel endpoint som helst. Byt leverantör i `.env` med två variabler: `ONEMIN_BASE_URL` och `ONEMIN_API_KEY`. Variablerna heter `ONEMIN_*` av historiska skäl, men fungerar för alla leverantörer.
+
+| Leverantör | `ONEMIN_BASE_URL` | Exempel på modellnamn |
+|---|---|---|
+| OpenAI | `https://api.openai.com/v1` | `gpt-4o-mini`, `gpt-4.1-mini` |
+| Anthropic | `https://api.anthropic.com/v1/` | `claude-haiku-5-5`, `claude-sonnet-5-5` |
+| OpenRouter | `https://openrouter.ai/api/v1` | `openai/gpt-4o-mini`, `anthropic/claude-haiku-5-5` |
+
+Steg:
+1. Skapa en API-nyckel hos leverantören.
+2. Sätt `ONEMIN_BASE_URL` och `ONEMIN_API_KEY` i `.env`.
+3. Sätt modellnamnen enligt leverantörens lista. Namnen varierar mellan leverantörer.
+4. Starta om appen och skicka ett kort testmeddelande.
+
+Tänk på att:
+- Använd en leverantör i taget. Blanda inte nycklar och endpoints i samma `.env`.
+- Kontrollera att modellen klarar verktygsanrop, om du använder verktygen i `multichat`. Anthropics och OpenRouters OpenAI-kompatibla endpoints är inte testade i det här projektet.
+- Kostnaden varierar stort mellan modeller. Kontrollera prislistan hos leverantören innan du börjar.
