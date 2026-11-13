@@ -9,6 +9,8 @@ from pathlib import Path
 
 from dotenv import load_dotenv
 
+import providers
+
 HOME = Path(__file__).resolve().parent
 STORE_FILE = HOME / "turns.jsonl"
 LEGACY_HISTORY = HOME / "history.json"
@@ -67,19 +69,17 @@ def _auto_compact_at() -> int:
 def load_settings() -> Settings:
     load_dotenv(ENV_FILE)
 
-    api_key = os.environ.get("ONEMIN_API_KEY", "").strip()
-    if not api_key:
-        sys.exit(
-            "ONEMIN_API_KEY saknas — lägg den i chat/.env (se .env.example) "
-            "eller exportera den i skalet."
-        )
+    try:
+        _, base_url, api_key = providers.resolve(os.environ)
+    except providers.ProviderError as exc:
+        sys.exit(str(exc))
 
     model = os.environ.get("ONEMIN_MODEL", "").strip() or DEFAULT_MODEL
     return Settings(
         api_key=api_key,
         model=model,
         compact_model=os.environ.get("ONEMIN_COMPACT_MODEL", "").strip() or model,
-        base_url=os.environ.get("ONEMIN_BASE_URL", "").strip() or DEFAULT_BASE_URL,
+        base_url=base_url,
         auto_compact_at=_auto_compact_at(),
         persona=persona_enabled(os.environ.get("ONEMIN_PERSONA")),
     )

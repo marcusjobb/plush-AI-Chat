@@ -8,9 +8,9 @@ from __future__ import annotations
 import sys
 from pathlib import Path
 
-from app import build_assistants, build_documents, env_value, load_env
+from app import build_assistants, build_documents, load_backend_settings
 from documents import MAX_BYTES, DocumentError
-from llm import DEFAULT_BASE_URL, OpenAIBackend
+from llm import OpenAIBackend
 
 
 def main(argv: list[str]) -> int:
@@ -27,9 +27,9 @@ def main(argv: list[str]) -> int:
     with path.open("rb") as fh:
         data = fh.read(MAX_BYTES + 1)
 
-    api_key = load_env()
+    base_url, api_key = load_backend_settings()
     assistants = build_assistants()
-    backend = OpenAIBackend(api_key, env_value("ONEMIN_BASE_URL", DEFAULT_BASE_URL))
+    backend = OpenAIBackend(api_key, base_url)
     documents = build_documents(backend, assistants)
 
     try:

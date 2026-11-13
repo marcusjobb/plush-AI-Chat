@@ -178,23 +178,24 @@ JSON-tolkningen testas med temporära filer och påhittade svar.
 | `NOTES.md` | Beslutslogg med mätningar och det som förkastades. |
 | `tests/` | 49 tester utan nätverk. |
 
-## Byt leverantör
+## Välj leverantör
 
-Appen pratar med vilken OpenAI-kompatibel endpoint som helst. Byt leverantör i `.env` med två variabler: `ONEMIN_BASE_URL` och `ONEMIN_API_KEY`. Variablerna heter `ONEMIN_*` av historiska skäl, men fungerar för alla leverantörer.
+Sätt `PROVIDER` i `.env`. Varje leverantör har sin egen nyckelvariabel:
 
-| Leverantör | `ONEMIN_BASE_URL` | Exempel på modellnamn |
+| `PROVIDER` | Nyckelvariabel | Endpoint |
 |---|---|---|
-| OpenAI | `https://api.openai.com/v1` | `gpt-4o-mini`, `gpt-4.1-mini` |
-| Anthropic | `https://api.anthropic.com/v1/` | `claude-haiku-5-5`, `claude-sonnet-5-5` |
-| OpenRouter | `https://openrouter.ai/api/v1` | `openai/gpt-4o-mini`, `anthropic/claude-haiku-5-5` |
+| `1min` (standard) | `ONEMIN_API_KEY` | `https://api.1min.ai/openai/v1` |
+| `openai` | `OPENAI_API_KEY` | `https://api.openai.com/v1` |
+| `anthropic` | `ANTHROPIC_API_KEY` | `https://api.anthropic.com/v1/` |
+| `openrouter` | `OPENROUTER_API_KEY` | `https://openrouter.ai/api/v1` |
+| `custom` | `CUSTOM_API_KEY` | `CUSTOM_BASE_URL` (du anger själv) |
 
 Steg:
-1. Skapa en API-nyckel hos leverantören.
-2. Sätt `ONEMIN_BASE_URL` och `ONEMIN_API_KEY` i `.env`.
-3. Sätt modellnamnen enligt leverantörens lista. Namnen varierar mellan leverantörer.
-4. Starta om appen och skicka ett kort testmeddelande.
+1. Sätt `PROVIDER` och nyckelvariabeln i `.env`. Fyll bara i den du använder.
+2. Sätt modellnamnen för leverantören. Namnen skiljer sig mellan leverantörer.
+3. Starta om appen.
 
-Tänk på att:
-- Använd en leverantör i taget. Blanda inte nycklar och endpoints i samma `.env`.
-- Kontrollera att modellen klarar verktygsanrop, om du använder verktygen i `multichat`. Anthropics och OpenRouters OpenAI-kompatibla endpoints är inte testade i det här projektet.
-- Kostnaden varierar stort mellan modeller. Kontrollera prislistan hos leverantören innan du börjar.
+Status:
+- OpenRouter är testat med ett riktigt anrop.
+- Anthropics OpenAI-kompatibla endpoint och verktygsanrop är inte testade här.
+- Felmeddelanden visar aldrig nyckeln.

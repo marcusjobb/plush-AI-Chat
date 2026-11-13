@@ -15,7 +15,8 @@ from dotenv import load_dotenv
 
 from chat import Assistant, ChatRoom, UnknownAssistant
 from documents import MAX_BYTES, DocumentError, DocumentStore, make_compressor
-from llm import DEFAULT_BASE_URL, OpenAIBackend
+from llm import OpenAIBackend
+import providers
 from store import SessionNotFound, SessionStore
 
 HERE = Path(__file__).resolve().parent
@@ -28,13 +29,18 @@ def env_value(name: str, default: str) -> str:
     return os.environ.get(name, "").strip() or default
 
 
-def load_env() -> str:
-    """Läser .env och returnerar API-nyckeln. Nyckeln visas aldrig i felmeddelanden."""
+def load_backend_settings() -> tuple[str, str]:
+    """Läser .env och returnerar (bas-URL, API-nyckel) för vald leverantör.
+
+    Felmeddelanden innehåller aldrig nyckeln.
+    """
     load_dotenv(HERE / ".env")
-    api_key = env_value("ONEMIN_API_KEY", "")
-    if not api_key:
-        sys.exit("ONEMIN_API_KEY saknas — lägg den i multipleAssistant/.env (se .env.example)")
-    return api_key
+    try:
+        name, base_url, api_key = providers.resolve(os.environ)
+    except providers.ProviderError as exc:
+        sys.exit(str(exc))
+    print(f"(leverantör: {name})", file=sys.stderr)
+    return base_url, api_key
 
 
 ADA_PERSONA = (
@@ -93,9 +99,9 @@ def build_documents(backend: OpenAIBackend, assistants: list[Assistant]) -> Docu
 
 
 def build_room_from_env() -> ChatRoom:
-    api_key = load_env()
+    base_url, api_key = load_backend_settings()
     assistants = build_assistants()
-    backend = OpenAIBackend(api_key, env_value("ONEMIN_BASE_URL", DEFAULT_BASE_URL))
+    backend = OpenAIBackend(api_key, base_url)
     documents = build_documents(backend, assistants)
     return ChatRoom(assistants, backend, SessionStore(SESSIONS), documents=documents)
 
